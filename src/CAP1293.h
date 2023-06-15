@@ -100,10 +100,11 @@ typedef union
 	struct
 	{
 		uint8_t INT : 1;
-		uint8_t EMPTY_1 : 3;
+		uint8_t COMBO :1;
+		uint8_t CGAIN : 2; //COMBO & CGAIN WERE EMPTY_1:3 -PB230523
 		uint8_t DSLEEP : 1;
 		uint8_t STBY : 1;
-		uint8_t EMPTY_2 : 2;
+		uint8_t GAIN : 2; //WAS EMPTY_2 -PB230523
 	} MAIN_CONTROL_FIELDS;
 	uint8_t MAIN_CONTROL_COMBINED;
 } MAIN_CONTROL_REG;
@@ -290,6 +291,8 @@ public:
 	void setReleaseInterruptDisabled();
 	void setReleaseInterruptEnabled();
 	bool isReleaseInterruptEnabled();
+	
+	
 
 private:
 	TwoWire *_i2cPort = NULL; //The generic connection to user's chosen I2C hardware
@@ -300,6 +303,9 @@ private:
 	void readRegisters(CAP1293_Register reg, byte *buffer, byte len);
 	void writeRegister(CAP1293_Register reg, byte data);
 	void writeRegisters(CAP1293_Register reg, byte *buffer, byte len);
+
+
+
 };
 
 #endif

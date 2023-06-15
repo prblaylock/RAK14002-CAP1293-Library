@@ -940,6 +940,7 @@ byte CAP1293::readRegister(CAP1293_Register reg)
 	}
 }
 
+
 /* READ MULTIPLE REGISTERS
     Read "en" bytes from the CAP1293, starting at register "reg." Bytes are 
     stored in "buffer" on exit.
